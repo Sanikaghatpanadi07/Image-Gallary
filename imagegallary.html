@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallary Using HTML ,CSS and Javascript</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="full-img" id="fullImgBox">
+       
+    <button class="nav-btn" onclick="prevImage()">⟨</button>
+    <img id="fullImg" src="">
+    <button class="nav-btn" onclick="nextImage()">⟩</button>
+    <span onclick="closeFullImg()">x</span>
+
+
+       
+        <span onclick="closeFullImg()">x</span>
+    </div>
+    <div class="img-gallary">
+        <img src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"  onclick="openFullImg(this.src)" alt="Tree photo" >
+        <img src="https://media.istockphoto.com/id/471926619/photo/moraine-lake-at-sunrise-banff-national-park-canada.jpg?s=612x612&w=0&k=20&c=mujiCtVk5QA697SD3d8V8BGmd91-8HlxCNHkolEA0Bo=" onclick="openFullImg(this.src)" alt="Nature and Landscape" >
+        <img src="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8=" onclick="openFullImg(this.src)" alt="sunrise" >
+        <img src="https://rukminim3.flixcart.com/image/850/1000/kgsb1jk0-0/poster/n/h/y/medium-twfnp2-beautiful-waterfall-nature-view-large-size-high-original-imafwy37qv2b5g3v.jpeg?q=20&crop=false"  onclick="openFullImg(this.src)" alt="Waterfall" >
+        <img src="https://i.pinimg.com/474x/c0/cb/1e/c0cb1eca075ae50f27bb1079c573a181.jpg" onclick="openFullImg(this.src)" alt="Leaves">
+        <img src="https://m.media-amazon.com/images/I/81OOtJ3f7RL._UF1000,1000_QL80_.jpg" onclick="openFullImg(this.src)" alt="Greenery" >
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUrvE85eW9nMQbakX11jPL2XybGmNTIlhnKw&s" onclick="openFullImg(this.src)" alt="Mountain">
+        <img src="https://thumbs.dreamstime.com/b/mountain-river-forest-north-cascades-national-park-washington-usa-73004270.jpg" onclick="openFullImg(this.src)" alt="River">
+    </div>
+
+   <script>
+    var fullImgBox = document.getElementById("fullImgBox");
+    var fullImg = document.getElementById("fullImg");
+    var galleryImages = document.querySelectorAll(".img-gallary img");
+    var currentIndex = 0;
+
+    function openFullImg(pic) {
+        fullImgBox.style.display = "flex";
+        fullImg.src = pic;
+
+        for (var i = 0; i < galleryImages.length; i++) {
+            if (galleryImages[i].src === pic) {
+                currentIndex = i;
+                break;
+            }
+        }
+    }
+
+    function closeFullImg() {
+        fullImgBox.style.display = "none";
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        fullImg.src = galleryImages[currentIndex].src;
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        fullImg.src = galleryImages[currentIndex].src;
+    }
+</script>
+
+</body>
+</html>
